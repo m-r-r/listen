@@ -18,7 +18,8 @@ module Listen
         require 'wdm'
         true
       rescue LoadError
-        _log :debug, "wdm - load failed: #{$!}:#{$@.join("\n")}"
+        Celluloid.logger.send :debug, "wdm - load failed: #{$!}:#{$@.join("\n")}"
+
         Kernel.warn BUNDLER_DECLARE_GEM
         false
       end
